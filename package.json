@@ -1,0 +1,27 @@
+{
+  "name": "cars-express-workshop",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ilker karan",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilkerkaran/cars-express-workshop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ilkerkaran/cars-express-workshop/issues"
+  },
+  "homepage": "https://github.com/ilkerkaran/cars-express-workshop#readme",
+  "description": ""
+}
