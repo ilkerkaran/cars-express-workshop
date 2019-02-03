@@ -1,19 +1,24 @@
+import * as context from '../middlewares/sequelize';
 //predefined data
 const cars = [
-  { id: 1, brand: "Audi", model: "A3", engine: "1.0 TFSI S-Tronic" },
-  { id: 2, brand: "Volkswagen", model: "Polo", engine: "1.6 TDI Dsg" },
+  { id: 1, brand: 'Audi', model: 'A3', engine: '1.0 TFSI S-Tronic' },
+  { id: 2, brand: 'Volkswagen', model: 'Polo', engine: '1.6 TDI Dsg' },
   {
     id: 3,
-    brand: "Opel",
-    model: "Corsa",
-    engine: "1.0 Twinport Active-Shift"
+    brand: 'Opel',
+    model: 'Corsa',
+    engine: '1.0 Twinport Active-Shift'
   }
 ];
 
 const carService = {
   //return all cars
   getAll: () => {
-    return cars;
+    console.log(context.CarDefinition);
+    console.log(context.kek);
+    context.CarDefinition.findAll().then(carDefinitions =>
+      res.json(carDefinitions)
+    );
   },
   //return car without engine property
   getById: id => {

@@ -1,8 +1,8 @@
-import { Router } from "express";
-import carService from "../services/carService";
+import { Router } from 'express';
+import carService from '../services/carService';
 var carRouter = Router();
 
-carRouter.get("/", (req, res) => {
+carRouter.get('/', (req, res) => {
   res.json(carService.getAll());
 });
 

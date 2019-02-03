@@ -333,3 +333,6 @@ appsettings.json
 *.zip
 *.rar
 SignalRClient/dist
+
+#VsCode 
+.vscode/
