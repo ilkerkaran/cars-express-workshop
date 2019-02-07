@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import carService from '../services/carService';
+import CarController from '../controllers/carController';
+
+var controller = new CarController();
 var carRouter = Router();
 
-carRouter.get('/', (req, res) => {
-  res.json(carService.getAll());
-});
+carRouter.get('/', (req, res) => controller.getAll(req, res));
 
 module.exports = carRouter;

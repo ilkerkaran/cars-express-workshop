@@ -1,6 +1,6 @@
 /* jshint indent: 2 */
 
-export default function(sequelize, DataTypes) {
+export default (sequelize, DataTypes) => {
   return sequelize.define(
     'CarDefinition',
     {
@@ -35,7 +35,8 @@ export default function(sequelize, DataTypes) {
       }
     },
     {
-      tableName: 'CarDefinition'
+      tableName: 'CarDefinition',
+      timestamps: false
     }
   );
-}
+};

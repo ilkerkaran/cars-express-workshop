@@ -23,7 +23,8 @@ export default function(sequelize, DataTypes) {
       }
     },
     {
-      tableName: 'User'
+      tableName: 'User',
+      timestamps: false
     }
   );
 }
