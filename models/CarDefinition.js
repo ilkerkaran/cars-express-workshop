@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 export default (sequelize, DataTypes) => {
-  return sequelize.define(
+  var CarDefinition = sequelize.define(
     'CarDefinition',
     {
       Id: {
@@ -37,6 +37,12 @@ export default (sequelize, DataTypes) => {
     {
       tableName: 'CarDefinition',
       timestamps: false
+    },
+    {
+      associate: function(models) {
+        CarDefinition.belongsTo(models.Car, { foreignKey: { unique: true } });
+      }
     }
   );
+  return CarDefinition;
 };

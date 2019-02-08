@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 export default function(sequelize, DataTypes) {
-  return sequelize.define(
+  var Car = sequelize.define(
     'Car',
     {
       Id: {
@@ -33,8 +33,14 @@ export default function(sequelize, DataTypes) {
         allowNull: false
       }
     },
-    {
-      tableName: 'Car'
+   {
+      tableName: 'Car',
+      classMethods: {
+        associate: function(models) {
+          Car.belongsTo(models.CarDefinition, { foreignKey: 'CarDefinitionId' });
+        }
+      }
     }
   );
+  return Car;
 }

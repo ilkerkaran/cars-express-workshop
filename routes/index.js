@@ -8,5 +8,5 @@ router.get('/', (req, res) => {
 
 // split up route handling
 router.use('/car', require('./car'));
-
+router.use('/account', require('./account'));
 module.exports = router;

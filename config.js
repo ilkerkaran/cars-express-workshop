@@ -1,6 +1,7 @@
 var config = {
 	debug: true,
 	port: 3000,
+	jwt_secret: 'your_jwt_secret',
 	databaseConfiguration: {
 		host: 'UNDERCITY',
 		username: 'sa',

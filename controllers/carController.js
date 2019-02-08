@@ -7,14 +7,21 @@ class CarController {
     );
   }
 
-  getById(id) {
-    const car = this.cars.find(car => car.id === id);
-    if (car) {
-      const { engine, ...carWithoutEngine } = car;
-      return carWithoutEngine;
-    }
-
-    return cars;
+  getById(req, res) {
+    context.CarDefinition.findByPk(req.params.id, {
+      attributes: ['Id', 'Brand', 'Model'] //object
+    }).then(carDef => res.json(carDef));
+  }
+  getMyCar(req, res) {
+    context.Car.findAll({
+      where: { OwnerUserId: req.user.Id },
+      attributes: ['Id', 'Plate'], //object
+      include: [
+        { model: context.CarDefinition, attributes: ['Brand', 'Model'] },
+        { model: context.User, attributes: [''] },
+        { model: context.Subjects, attributes: ['Name'] }
+      ]
+    }).then(carDef => res.json(carDef));
   }
 }
 
