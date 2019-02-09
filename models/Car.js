@@ -33,11 +33,12 @@ export default function(sequelize, DataTypes) {
         allowNull: false
       }
     },
-   {
+    {
       tableName: 'Car',
       classMethods: {
         associate: function(models) {
-          Car.belongsTo(models.CarDefinition, { foreignKey: 'CarDefinitionId' });
+          // associations can be defined here
+         Car.belongsTo(models.CarDefinition, {foreignKey: 'CarDefinitionId'});
         }
       }
     }

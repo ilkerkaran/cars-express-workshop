@@ -15,11 +15,11 @@ class CarController {
   getMyCar(req, res) {
     context.Car.findAll({
       where: { OwnerUserId: req.user.Id },
-      attributes: ['Id', 'Plate'], //object
+      attributes: ['Id', 'PlateNumber'], //object
       include: [
-        { model: context.CarDefinition, attributes: ['Brand', 'Model'] },
-        { model: context.User, attributes: [''] },
-        { model: context.Subjects, attributes: ['Name'] }
+        // { model: context.CarDefinition, attributes: ['Brand', 'Model'] },
+        // { model: context.User, attributes: [''] },
+        // { model: context.Subjects, attributes: ['Name'] }
       ]
     }).then(carDef => res.json(carDef));
   }

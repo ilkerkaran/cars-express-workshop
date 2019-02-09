@@ -36,11 +36,17 @@ export default (sequelize, DataTypes) => {
     },
     {
       tableName: 'CarDefinition',
-      timestamps: false
-    },
-    {
-      associate: function(models) {
-        CarDefinition.belongsTo(models.Car, { foreignKey: { unique: true } });
+      timestamps: false,
+      classMethods: {
+        associate: function(models) {
+          // associations can be defined here
+         CarDefinition.hasMany(models.CarDefinition, {as: 'Cars'}
+        
+         
+         
+         
+         );
+        }
       }
     }
   );
