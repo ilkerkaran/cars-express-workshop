@@ -12,16 +12,25 @@ class CarController {
       attributes: ['Id', 'Brand', 'Model'] //object
     }).then(carDef => res.json(carDef));
   }
-  getMyCar(req, res) {
-    context.Car.findAll({
+  async getMyCar(req, res) {
+    var exi = await context.Car.findAll({
       where: { OwnerUserId: req.user.Id },
       attributes: ['Id', 'PlateNumber'], //object
       include: [
-        // { model: context.CarDefinition, attributes: ['Brand', 'Model'] },
-        // { model: context.User, attributes: [''] },
-        // { model: context.Subjects, attributes: ['Name'] }
+        { model: context.CarDefinition, attributes: ['Brand', 'Model'] }
       ]
-    }).then(carDef => res.json(carDef));
+    }).then(carArray => {
+      let resultData = carArray.map(car => {
+        //flatten the object
+        let {CarDefinition: carDef, ...carDTO} = car.dataValues;
+        carDTO.Brand = carDef.Brand;
+        carDTO.Model = carDef.Model;
+        return carDTO;
+      });
+      res.json(resultData);
+      return resultData;
+    });
+    return exi;
   }
 }
 

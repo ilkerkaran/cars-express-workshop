@@ -2,6 +2,9 @@ import fs from 'fs';
 import path from 'path';
 import Sequelize from 'sequelize';
 import config from '../config';
+import CarModel from './Car';
+import CarDefinitionModel from './CarDefinition';
+import UserModel from './User';
 const basename = path.basename(module.filename);
 const db = {};
 
@@ -29,25 +32,35 @@ sequelize
     console.error('Unable to connect to the database:', err);
   });
 
-// read sync files
-fs.readdirSync(__dirname)
-  .filter(
-    file =>
-      file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
-  )
-  .forEach(file => {
-    const model = sequelize.import(path.join(__dirname, file));
-    db[model.name] = model;
-  });
-
-//associate
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
-
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+//read models from file dir and fill it with reflection.
+// read sync files
+// fs.readdirSync(__dirname)
+//   .filter(
+//     file =>
+//       file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
+//   )
+//   .forEach(file => {
+//     const model = sequelize.import(path.join(__dirname, file));
+//     db[model.name] = model;
+//   });
+
+// //associate
+// Object.keys(db).forEach(modelName => {
+//   if (db[modelName].associate) {
+//     db[modelName].associate(db);
+//   }
+// });
+
+//Model definitions
+db.Car = CarModel(sequelize, Sequelize);
+db.User = UserModel(sequelize, Sequelize);
+db.CarDefinition = CarDefinitionModel(sequelize, Sequelize);
+
+db.User.hasMany(db.Car);
+db.Car.belongsTo(db.User);
+db.Car.belongsTo(db.CarDefinition);
+db.CarDefinition.hasMany(db.Car);
 export default db;
