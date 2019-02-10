@@ -40,12 +40,7 @@ export default (sequelize, DataTypes) => {
       classMethods: {
         associate: function(models) {
           // associations can be defined here
-         CarDefinition.hasMany(models.CarDefinition, {as: 'Cars'}
-        
-         
-         
-         
-         );
+          CarDefinition.hasMany(models.CarDefinition, { as: 'Cars' });
         }
       }
     }

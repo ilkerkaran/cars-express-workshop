@@ -14,7 +14,6 @@ const sequelize = new Sequelize(
   config.databaseConfiguration.password,
   {
     host: config.databaseConfiguration.host,
-    //port: 1433,
     dialect: config.databaseConfiguration.dialect,
     logging: config.databaseConfiguration.logging,
     dialectOptions: {
@@ -59,8 +58,14 @@ db.Car = CarModel(sequelize, Sequelize);
 db.User = UserModel(sequelize, Sequelize);
 db.CarDefinition = CarDefinitionModel(sequelize, Sequelize);
 
+//Associations
+//User
 db.User.hasMany(db.Car);
+//Car
 db.Car.belongsTo(db.User);
 db.Car.belongsTo(db.CarDefinition);
+//CarDefinition
 db.CarDefinition.hasMany(db.Car);
+//Segment
+
 export default db;
