@@ -328,11 +328,12 @@ src/AspNetCoreAngularSignalR/wwwroot/
 
 #net core appsetting
 appsettings.json
+config.js
 
 #deployment folders
 *.zip
 *.rar
-SignalRClient/dist
+*/dist
 
 #VsCode 
 .vscode/
